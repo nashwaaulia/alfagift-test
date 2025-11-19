@@ -1,0 +1,85 @@
+
+body {
+  background: #ffffff;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  padding: 0;
+}
+
+.header-area {
+  background: #0085ff;
+  padding: 15px 10px;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header-title {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.notification-list {
+  margin-top: 15px;
+  background: white;
+}
+
+.notification-item {
+  padding: 14px 10px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.notification-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.notification-arrow {
+  font-size: 22px;
+  color: #b5b5b5;
+}
+
+.update-order-bar {
+  padding: 10px 10px;
+  background: #0085ff;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  border-bottom: 1px solid #006ddd;
+}
+
+.empty-state {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.empty-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0085ff;
+}
+
+.empty-subtitle {
+  font-size: 16px;
+  color: #8ab9e8;
+}
+
+.empty-icon svg {
+  opacity: 0.6;
+}

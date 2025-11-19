@@ -1,0 +1,191 @@
+/* style.css */
+.form-custom {
+    background-color: rgba(13, 110, 253, 0.25);
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+.form-custom:focus {
+    background-color: rgba(13, 110, 253, 0.35);
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    outline: none;
+}
+
+.form-custom::placeholder {
+    color: rgba(13, 110, 253, 0.7);
+}
+
+/* Global Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Card Styles */
+.card-container {
+    margin-top: -80px;
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: 600;
+    padding: 1.5rem;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.btn-outline-primary {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Text Styles */
+.text-primary {
+    color: #0d6efd !important;
+}
+
+/* Header Styles */
+.header-content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.header-title {
+    color: white;
+    font-weight: 600;
+}
+
+.header-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Success Message */
+.success-message {
+    font-size: 1.1rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Logo Styles */
+.logo {
+    font-size: 6rem;
+}
+
+/* Form Container */
+.form-container {
+    margin-top: 2rem;
+}
+
+/* Button Continue */
+.btn-continue {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+/* Divider */
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #eaeaea;
+    z-index: 1;
+}
+
+/* Countdown */
+.countdown {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Resend Options */
+.resend-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* OTP Inputs */
+.otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.otp-input {
+    width: 45px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.otp-input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Info Text */
+.info-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Phone Number */
+.phone-number {
+    font-weight: 600;
+}
+
+/* Alert Light */
+.alert-light {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+/* Media Queries */
+@media (min-width: 576px) {
+    .resend-options {
+        flex-direction: row;
+    }
+    
+    .otp-input {
+        width: 50px;
+        height: 55px;
+    }
+}

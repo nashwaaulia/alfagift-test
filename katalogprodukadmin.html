@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk 2024</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="mengaturkatalog.css">
+</head>
+
+<body>
+
+    <div class="container-fluid p-0 d-flex flex-column min-vh-100">
+
+        <!-- ======================= TOP ======================= -->
+        <div class="dashboard-top-2024 bg-primary text-white">
+            <h4 class="fw-bold mb-1">
+                <i class="bi bi-hexagon me-2"></i> Katalog Produk
+            </h4>
+            <span>Hello Admin</span>
+        </div>
+        <!-- =================================================== -->
+
+        <div class="p-3 mt-2">
+
+            <!-- Tombol Tambah + Search -->
+            <div class="d-flex gap-2 mb-3">
+                <button class="btn btn-primary fw-semibold px-3">
+                    + Tambah Produk
+                </button>
+                <div class="flex-grow-1">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </div>
+
+            <!-- Grid Produk -->
+            <div class="row g-3">
+
+                <!-- PRODUK 1 - GURIBEE -->
+                <div class="col-6">
+                    <div class="produk-card-2024 p-2 shadow-sm rounded">
+                        <img src="https://arti-assets.sgp1.cdn.digitaloceanspaces.com/renyswalayanku/products/81b694f4-279b-4924-bb51-1ed4ad95cc92.jpg"
+                            class="produk-img-2024 mb-2" alt="Produk">
+
+                        <p class="mb-1 fw-semibold small">
+                            Guribee Potato Chips Rasa BBQ Balado 68 g
+                        </p>
+                        <p class="fw-bold text-dark mb-2">Rp 9.700</p>
+
+                        <button class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#editProdukModal" data-produk="guribee">Edit Produk</button>
+                        <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#hapusProdukModal">Hapus Produk</button>
+                    </div>
+                </div>
+
+                <!-- PRODUK 2 - LAINNYA -->
+                <div class="col-6">
+                    <div class="produk-card-2024 p-2 shadow-sm rounded">
+                        <div class="placeholder-box-2024">
+                            <span>Gambar Produk</span>
+                        </div>
+                        <p class="mb-1 fw-semibold small mt-2">
+                            Produk Lainnya
+                        </p>
+                        <p class="fw-bold text-dark mb-2">Rp 15.000</p>
+
+                        <button class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#editProdukModal" data-produk="lainnya">Edit Produk</button>
+                        <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#hapusProdukModal">Hapus Produk</button>
+                    </div>
+                </div>
+
+                <!-- KOSONG 3 -->
+                <div class="col-6">
+                    <div class="produk-card-2024 p-2 shadow-sm rounded text-center">
+                        <div class="placeholder-box-2024"></div>
+                        <button class="btn btn-primary w-100 mb-1 mt-2" data-bs-toggle="modal" data-bs-target="#editProdukModal" data-produk="lainnya">Edit Produk</button>
+                        <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#hapusProdukModal">Hapus Produk</button>
+                    </div>
+                </div>
+
+                <!-- KOSONG 4 -->
+                <div class="col-6">
+                    <div class="produk-card-2024 p-2 shadow-sm rounded text-center">
+                        <div class="placeholder-box-2024"></div>
+                        <button class="btn btn-primary w-100 mb-1 mt-2" data-bs-toggle="modal" data-bs-target="#editProdukModal" data-produk="lainnya">Edit Produk</button>
+                        <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#hapusProdukModal">Hapus Produk</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bottom-space-2024"></div>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer
+            class="mobile-footer-2024 bg-primary bg-opacity-25 fixed-bottom d-flex justify-content-between align-items-center mt-5 px-4 py-2">
+            <a href="home.html" class="footer-btn-2024" width="24" height="24">
+                <i class="bi bi-house"></i>
+            </a>
+            <a href="keranjang.html" class="footer-btn-2024" width="24" height="24">
+                <i class="bi bi-basket-fill"></i>
+            </a>
+
+            <a href="pesanan.html" class="footer-center-btn-2024" width="24" height="24">
+                <i class="bi bi-plus-lg"></i>
+            </a>
+
+            <a href="riwayatPesanan.html" class="footer-btn-2024" width="24" height="24">
+                <i class="bi bi-card-checklist"></i>
+            </a>
+
+            <a href="profile.html" class="footer-btn-2024" width="24" height="24">
+                <i class="bi bi-person"></i>
+            </a>
+        </footer>
+        <!-- ===================================================== -->
+
+        <!-- ======================= MODAL EDIT PRODUK ======================= -->
+        <div class="modal fade custom-modal-2024" id="editProdukModal" tabindex="-1" aria-labelledby="editProdukModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-custom-2024">
+                        <h5 class="modal-title w-100 text-center fw-bold" id="editProdukModalLabel">Edit Produk</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Input untuk memilih gambar -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Pilih Gambar</label>
+                            <div class="image-upload-container-2024" id="imageUploadContainer">
+                                <div class="upload-icon-2024">
+                                    <i class="bi bi-cloud-arrow-up"></i>
+                                </div>
+                                <p class="mb-0">Klik untuk mengunggah gambar produk</p>
+                                <p class="small text-muted">Format: JPG, PNG, GIF (Maks. 5MB)</p>
+                                <input type="file" class="d-none" id="gambarProduk" accept="image/*">
+                                <img id="previewGambar" class="image-preview-2024" alt="Preview Gambar">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="namaProduk" class="form-label fw-semibold">Nama Produk</label>
+                            <input type="text" class="form-control" id="namaProduk" value="Guribee Potato Chips Rasa BBQ">
+                        </div>
+                        <div class="mb-3">
+                            <label for="deskripsiProduk" class="form-label fw-semibold">Deskripsi</label>
+                            <textarea class="form-control" id="deskripsiProduk" rows="2">Balado 68 g</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hargaProduk" class="form-label fw-semibold">Harga Produk</label>
+                            <input type="text" class="form-control" id="hargaProduk" value="Rp 9.700">
+                        </div>
+                        <div class="mb-3">
+                            <label for="stokProduk" class="form-label fw-semibold">Jumlah Stok</label>
+                            <input type="number" class="form-control" id="stokProduk" value="50">
+                        </div>
+                        <div class="mb-3">
+                            <label for="kategoriProduk" class="form-label fw-semibold">Kategori</label>
+                            <select class="form-select" id="kategoriProduk">
+                                <option selected>Snack</option>
+                                <option>Minuman</option>
+                                <option>Makanan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-footer-custom-2024">
+                        <button type="button" class="btn btn-primary btn-custom-2024 w-100" id="simpanPerubahan">Simpan Perubahan</button>
+                        <button type="button" class="btn btn-danger btn-custom-2024 w-100" data-bs-toggle="modal" data-bs-target="#hapusProdukModal">Hapus Produk</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= MODAL DATA TIDAK LENGKAP ======================= -->
+        <div class="modal fade custom-modal-2024" id="dataTidakLengkapModal" tabindex="-1" aria-labelledby="dataTidakLengkapModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-custom-2024">
+                        <div class="status-icon-2024 error-icon-2024">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h5 class="modal-title w-100 fw-bold" id="dataTidakLengkapModalLabel">Data Produk <br> Ini Tidak Lengkap</h5>
+                    </div>
+                    <div class="modal-footer modal-footer-custom-2024">
+                        <button type="button" class="btn btn-secondary btn-custom-2024 w-100" data-bs-dismiss="modal">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= MODAL GAGAL SIMPAN ======================= -->
+        <div class="modal fade custom-modal-2024" id="gagalSimpanModal" tabindex="-1" aria-labelledby="gagalSimpanModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-custom-2024">
+                        <div class="status-icon-2024 error-icon-2024">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h5 class="modal-title w-100 fw-bold" id="gagalSimpanModalLabel">Gagal Menyimpan <br> Silahkan Coba Lagi</h5>
+                    </div>
+                    <div class="modal-footer modal-footer-custom-2024">
+                        <button type="button" class="btn btn-secondary btn-custom-2024 w-100" data-bs-dismiss="modal">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= MODAL BERHASIL SIMPAN ======================= -->
+        <div class="modal fade custom-modal-2024" id="berhasilSimpanModal" tabindex="-1" aria-labelledby="berhasilSimpanModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-custom-2024">
+                        <div class="status-icon-2024 success-icon-2024">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h5 class="modal-title w-100 fw-bold" id="berhasilSimpanModalLabel">Perubahan <br> Berhasil Di Simpan</h5>
+                    </div>
+                    <div class="modal-footer modal-footer-custom-2024">
+                        <button type="button" class="btn btn-primary btn-custom-2024 w-100" data-bs-dismiss="modal">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= MODAL HAPUS PRODUK ======================= -->
+        <div class="modal fade custom-modal-2024" id="hapusProdukModal" tabindex="-1" aria-labelledby="hapusProdukModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-custom-2024">
+                        <div class="status-icon-2024 error-icon-2024">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h5 class="modal-title w-100 fw-bold" id="hapusProdukModalLabel">Yakin Ingin Menghapus <br> Produk Ini?</h5>
+                    </div>
+                    <div class="modal-footer modal-footer-custom-2024">
+                        <button type="button" class="btn btn-cancel-2024 btn-custom-2024" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-confirm-2024 btn-custom-2024" data-bs-dismiss="modal">Hapus Produk</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Variabel untuk menyimpan produk yang sedang diedit
+        let produkYangDiedit = '';
+
+        // Event listener untuk tombol edit produk
+        document.querySelectorAll('[data-bs-target="#editProdukModal"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // Simpan jenis produk yang sedang diedit
+                produkYangDiedit = this.getAttribute('data-produk');
+                
+                // Set gambar preview berdasarkan produk yang dipilih
+                const previewGambar = document.getElementById('previewGambar');
+                const imageUploadContainer = document.getElementById('imageUploadContainer');
+                const uploadText = imageUploadContainer.querySelector('p');
+                
+                if (produkYangDiedit === 'guribee') {
+                    // Set gambar produk Guribee
+                    previewGambar.src = 'https://arti-assets.sgp1.cdn.digitaloceanspaces.com/renyswalayanku/products/81b694f4-279b-4924-bb51-1ed4ad95cc92.jpg';
+                    previewGambar.style.display = 'block';
+                    uploadText.textContent = 'Gambar produk saat ini';
+                } else {
+                    // Kosongkan preview untuk produk lainnya
+                    previewGambar.style.display = 'none';
+                    uploadText.textContent = 'Klik untuk mengunggah gambar produk';
+                }
+            });
+        });
+
+        // Event listener untuk container upload gambar
+        document.getElementById('imageUploadContainer').addEventListener('click', function() {
+            document.getElementById('gambarProduk').click();
+        });
+
+        // Event listener untuk input file gambar
+        document.getElementById('gambarProduk').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const previewGambar = document.getElementById('previewGambar');
+                    previewGambar.src = event.target.result;
+                    previewGambar.style.display = 'block';
+                    
+                    // Ubah teks container
+                    const uploadText = document.getElementById('imageUploadContainer').querySelector('p');
+                    uploadText.textContent = 'Gambar produk yang dipilih';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Event listener untuk tombol simpan perubahan
+        document.getElementById('simpanPerubahan').addEventListener('click', function() {
+            // Tutup modal edit produk
+            const editModal = bootstrap.Modal.getInstance(document.getElementById('editProdukModal'));
+            editModal.hide();
+            
+            // Cek apakah data lengkap
+            const namaProduk = document.getElementById('namaProduk').value;
+            const deskripsiProduk = document.getElementById('deskripsiProduk').value;
+            const hargaProduk = document.getElementById('hargaProduk').value;
+            const stokProduk = document.getElementById('stokProduk').value;
+            const kategoriProduk = document.getElementById('kategoriProduk').value;
+            
+            if (!namaProduk || !deskripsiProduk || !hargaProduk || !stokProduk || !kategoriProduk) {
+                // Tampilkan modal data tidak lengkap
+                setTimeout(() => {
+                    const dataTidakLengkapModal = new bootstrap.Modal(document.getElementById('dataTidakLengkapModal'));
+                    dataTidakLengkapModal.show();
+                }, 300);
+            } else {
+                // Cek apakah produk yang diedit adalah Guribee
+                if (produkYangDiedit === 'guribee') {
+                    // Tampilkan modal gagal simpan untuk Guribee
+                    setTimeout(() => {
+                        const gagalSimpanModal = new bootstrap.Modal(document.getElementById('gagalSimpanModal'));
+                        gagalSimpanModal.show();
+                    }, 300);
+                } else {
+                    // Tampilkan modal berhasil simpan untuk produk lainnya
+                    setTimeout(() => {
+                        const berhasilSimpanModal = new bootstrap.Modal(document.getElementById('berhasilSimpanModal'));
+                        berhasilSimpanModal.show();
+                    }, 300);
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

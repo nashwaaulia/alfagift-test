@@ -1,0 +1,262 @@
+.footer-login {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-footer {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+.btn-footer:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+
+.mobile-footer {
+    background: #ffffff;
+    height: 60px;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.08);
+}
+
+.footer-btn {
+    font-size: 26px;
+    color: #4A85F5;
+    text-decoration: none;
+}
+
+.footer-center-btn {
+    width: 60px;
+    height: 60px;
+    background: #4A85F5;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    margin-top: -30px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+.overflow-auto {
+      -webkit-overflow-scrolling: touch;
+    }
+
+.nav-pills{
+  background-color: rgb(252, 238, 156);
+} 
+
+.nav-pills::-webkit-scrollbar{
+      display: none; 
+    }
+
+.card-produk {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.card-img-top-wrap {
+    height: 150px; 
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body h6 {
+    font-size: 14px;
+    min-height: 40px; 
+}
+
+.card-body h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card-body p {
+    margin-bottom: 4px;
+}
+
+.card-body button {
+    border-radius: 8px;
+}
+
+/* style for page daftar */
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.header-area {
+    background-color: #008cff;
+    color: white;
+}
+
+.header-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.input-field {
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 14px;
+    background-color: #e8f3ff;
+    border: 2px solid #008cff;
+    color: #333;
+}
+
+.otp-info {
+    font-size: 13px;
+    color: #555;
+}
+
+.next-btn {
+    background-color: #008cff;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.next-btn:hover {
+    background-color: #0076d6;
+}
+
+.footer {
+    font-size: 14px;
+    color: #555;
+}
+
+.login-link {
+    color: #008cff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .next-btn {
+        margin-top: 40px;
+    }
+    .footer {
+        margin-top: 25px;
+        text-align: center;
+        display: block;
+    }
+}
+
+.next-btn.fixed-bottom {
+    left: 0;
+    right: 0;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: auto !important;
+}
+
+.footer.fixed-bottom {
+    left: 0;
+    right: 0;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: auto !important;
+}
+
+.line-blue {
+    width: 100%;
+    height: 30px; /* bisa disesuaikan ketebalannya */
+    background-color: #007bff; /* biru Bootstrap */
+}
+
+.line-blue-2 {
+    width: 100%;
+    height: 20px; /* bisa disesuaikan ketebalannya */
+    background-color: #007bff; /* biru Bootstrap */
+}
+
+/* Full width container */
+.container-fluid {
+    max-width: 100%;
+}
+
+/* Header */
+.header-area .back-btn i {
+    font-size: 2.3rem;
+}
+
+.filter-button.active {
+    background-color: var(--bs-primary);
+    color: white !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .header-title {
+        font-size: 1.2rem;
+    }
+    .order-item {
+        font-size: 0.9rem;
+    }
+}
+
+.header-area {
+            background-color: #0d6efd;
+        }
+        .back-btn {
+            text-decoration: none;
+        }
+        .counter-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .checkout-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .product-container {
+            margin-bottom: 70px; /* Space for fixed checkout button */
+        }
+        .checkbox {
+            cursor: pointer;
+        }
+        .total-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }

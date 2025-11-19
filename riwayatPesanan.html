@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pesanan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-bottom: 80px;
+        }
+        .header-area {
+            background-color: #0d6efd;
+            border-radius: 10px;
+            padding: 10px 15px;
+        }
+        .back-btn {
+            text-decoration: none;
+        }
+        .filter-button.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .order-card {
+            transition: transform 0.2s;
+            border: none;
+            border-radius: 12px;
+        }
+        .order-card:hover {
+            transform: translateY(-2px);
+        }
+        .status-badge {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+        }
+        .mobile-footer {
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .footer-center-btn {
+            background-color: #0d6efd;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-top: -25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Container -->
+    <div class="container-fluid p-3">
+
+        <!-- HEADER -->
+        <div class="header-area d-flex w-100 align-items-center mb-4 text-light p-3 border-bottom">
+            <a href="home.html" class="back-btn me-2 text-light" aria-label="Kembali">
+                <i class="bi bi-arrow-left fs-3"></i>
+            </a>
+            <h1 class="header-title fs-5 mb-0">Riwayat Pesanan</h1>
+        </div>
+
+        <!-- FILTER SECTION -->
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-3">Transaksi di Aplikasi</h5>
+
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button class="btn btn-outline-primary filter-btn active px-3 py-2" data-filter="all">
+                        Semua Status
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn px-3 py-2" data-filter="delivered">
+                        Dikirim
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn px-3 py-2" data-filter="processing">
+                        Diproses
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn px-3 py-2" data-filter="completed">
+                        Selesai
+                    </button>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-secondary filter-type-btn active px-3 py-2" data-type="all">
+                        Semua Jenis Transaksi
+                    </button>
+                    <button class="btn btn-outline-secondary filter-type-btn px-3 py-2" data-type="delivery">
+                        Pengiriman
+                    </button>
+                    <button class="btn btn-outline-secondary filter-type-btn px-3 py-2" data-type="pickup">
+                        Ambil di Toko
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFO TEXT -->
+        <p class="text-muted small mb-4">
+            <i class="bi bi-info-circle me-1"></i>
+            E-Receipt tersedia selama 90 hari sejak tanggal cetak
+        </p>
+
+        <!-- ORDER LIST -->
+        <div id="orderList">
+            <!-- Order 1 -->
+            <div class="card order-card shadow-sm mb-3" data-status="delivered" data-type="delivery">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div class="fw-semibold text-dark">16 Nov 2025 - 16:07 WIB</div>
+                        <span class="status-badge badge bg-success">Dikirim</span>
+                    </div>
+                    <div class="text-muted small mb-3">Dikirim ke Alamat - 1 Pengiriman</div>
+
+                    <div class="card bg-light border-0 p-3 mb-3">
+                        <div class="fw-semibold mb-1">10016912VC489A06 | 2 Produk</div>
+                        <div class="text-muted small">Taro Net Seaweed 119 g, Guribee Potato Chips Rasa BBQ Balado 68 g</div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary py-2 confirm-order" data-order="10016912VC489A06">
+                            <i class="bi bi-check-circle me-2"></i>Konfirmasi Pesanan
+                        </button>
+                        <button class="btn btn-outline-primary py-2 view-receipt" data-order="10016912VC489A06">
+                            <i class="bi bi-receipt me-2"></i>Lihat E-Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order 2 -->
+            <div class="card order-card shadow-sm mb-3" data-status="processing" data-type="delivery">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div class="fw-semibold text-dark">15 Nov 2025 - 14:20 WIB</div>
+                        <span class="status-badge badge bg-warning text-dark">Diproses</span>
+                    </div>
+                    <div class="text-muted small mb-3">Dikirim ke Alamat - 1 Pengiriman</div>
+
+                    <div class="card bg-light border-0 p-3 mb-3">
+                        <div class="fw-semibold mb-1">10016912VC489A05 | 3 Produk</div>
+                        <div class="text-muted small">Indomie Goreng Rendang, Ultra Milk Full Cream 1L, Aqua 600ml</div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-secondary py-2" disabled>
+                            <i class="bi bi-clock me-2"></i>Menunggu Pengiriman
+                        </button>
+                        <button class="btn btn-outline-primary py-2 view-receipt" data-order="10016912VC489A05">
+                            <i class="bi bi-receipt me-2"></i>Lihat E-Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order 3 -->
+            <div class="card order-card shadow-sm mb-3" data-status="completed" data-type="pickup">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div class="fw-semibold text-dark">14 Nov 2025 - 11:45 WIB</div>
+                        <span class="status-badge badge bg-info">Selesai</span>
+                    </div>
+                    <div class="text-muted small mb-3">Ambil di Toko - Alfamart Sudirman</div>
+
+                    <div class="card bg-light border-0 p-3 mb-3">
+                        <div class="fw-semibold mb-1">10016912VC489A04 | 1 Produk</div>
+                        <div class="text-muted small">Minyak Goreng Bimoli 2L</div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success py-2" disabled>
+                            <i class="bi bi-check-lg me-2"></i>Pesanan Selesai
+                        </button>
+                        <button class="btn btn-outline-primary py-2 view-receipt" data-order="10016912VC489A04">
+                            <i class="bi bi-receipt me-2"></i>Lihat E-Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order 4 -->
+            <div class="card order-card shadow-sm mb-3" data-status="delivered" data-type="delivery">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div class="fw-semibold text-dark">13 Nov 2025 - 09:30 WIB</div>
+                        <span class="status-badge badge bg-success">Dikirim</span>
+                    </div>
+                    <div class="text-muted small mb-3">Dikirim ke Alamat - 1 Pengiriman</div>
+
+                    <div class="card bg-light border-0 p-3 mb-3">
+                        <div class="fw-semibold mb-1">10016912VC489A03 | 4 Produk</div>
+                        <div class="text-muted small">Roti Tawar Sari Roti, Telur Ayam 1kg, Guribee Potato Chips, Taro Net Seaweed</div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary py-2 confirm-order" data-order="10016912VC489A03">
+                            <i class="bi bi-check-circle me-2"></i>Konfirmasi Pesanan
+                        </button>
+                        <button class="btn btn-outline-primary py-2 view-receipt" data-order="10016912VC489A03">
+                            <i class="bi bi-receipt me-2"></i>Lihat E-Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State (Hidden by default) -->
+        <div id="emptyState" class="text-center py-5 d-none">
+            <i class="bi bi-inbox display-1 text-muted mb-3"></i>
+            <h5 class="text-muted">Tidak ada pesanan</h5>
+            <p class="text-muted">Pesanan yang sesuai dengan filter akan muncul di sini</p>
+            <button class="btn btn-primary" id="resetFilter">Tampilkan Semua Pesanan</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mobile-footer fixed-bottom d-flex justify-content-between align-items-center px-4 py-2">
+        <a href="home.html" class="footer-btn text-primary">
+            <i class="bi bi-house"></i>
+        </a>
+        <a href="menu.html" class="footer-btn text-primary">
+            <i class="bi bi-basket-fill"></i>
+        </a>
+        <a href="keranjang.html" class="footer-center-btn text-white">
+            <i class="bi bi-plus-lg"></i>
+        </a>
+        <a href="riwayatPesanan.html" class="footer-btn text-primary">
+            <i class="bi bi-card-checklist"></i>
+        </a>
+        <a href="profile.html" class="footer-btn text-primary">
+            <i class="bi bi-person"></i>
+        </a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const filterTypeButtons = document.querySelectorAll('.filter-type-btn');
+            const orderCards = document.querySelectorAll('.order-card');
+            const emptyState = document.getElementById('emptyState');
+            const resetFilterBtn = document.getElementById('resetFilter');
+            const confirmOrderButtons = document.querySelectorAll('.confirm-order');
+            const viewReceiptButtons = document.querySelectorAll('.view-receipt');
+
+            // Current filters
+            let currentStatusFilter = 'all';
+            let currentTypeFilter = 'all';
+
+            // Filter functionality
+            function applyFilters() {
+                let visibleCount = 0;
+
+                orderCards.forEach(card => {
+                    const status = card.getAttribute('data-status');
+                    const type = card.getAttribute('data-type');
+
+                    const statusMatch = currentStatusFilter === 'all' || status === currentStatusFilter;
+                    const typeMatch = currentTypeFilter === 'all' || type === currentTypeFilter;
+
+                    if (statusMatch && typeMatch) {
+                        card.classList.remove('d-none');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('d-none');
+                    }
+                });
+
+                // Show empty state if no orders match
+                if (visibleCount === 0) {
+                    emptyState.classList.remove('d-none');
+                    document.getElementById('orderList').classList.add('d-none');
+                } else {
+                    emptyState.classList.add('d-none');
+                    document.getElementById('orderList').classList.remove('d-none');
+                }
+            }
+
+            // Status filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentStatusFilter = this.getAttribute('data-filter');
+                    applyFilters();
+                });
+            });
+
+            // Type filter buttons
+            filterTypeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterTypeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTypeFilter = this.getAttribute('data-type');
+                    applyFilters();
+                });
+            });
+
+            // Reset filter
+            resetFilterBtn.addEventListener('click', function() {
+                filterButtons.forEach(btn => {
+                    if (btn.getAttribute('data-filter') === 'all') {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                filterTypeButtons.forEach(btn => {
+                    if (btn.getAttribute('data-type') === 'all') {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                currentStatusFilter = 'all';
+                currentTypeFilter = 'all';
+                applyFilters();
+            });
+
+            // Confirm order
+            confirmOrderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const orderId = this.getAttribute('data-order');
+                    
+                    // Show confirmation modal
+                    if (confirm(`Konfirmasi pesanan ${orderId} telah diterima?`)) {
+                        // Update button state
+                        this.innerHTML = '<i class="bi bi-check-lg me-2"></i>Pesanan Dikonfirmasi';
+                        this.classList.remove('btn-primary');
+                        this.classList.add('btn-success');
+                        this.disabled = true;
+                        
+                        // Show success message
+                        showNotification('Pesanan berhasil dikonfirmasi!', 'success');
+                    }
+                });
+            });
+
+            // View receipt
+            viewReceiptButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const orderId = this.getAttribute('data-order');
+                    showNotification(`Membuka E-Receipt untuk pesanan ${orderId}`, 'info');
+                    // In a real app, this would open the receipt PDF or detail page
+                });
+            });
+
+            // Notification function
+            function showNotification(message, type = 'info') {
+                const alertClass = type === 'success' ? 'alert-success' : 'alert-info';
+                
+                const notification = document.createElement('div');
+                notification.className = `alert ${alertClass} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+                notification.style.zIndex = '9999';
+                notification.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Auto remove after 3 seconds
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 3000);
+            }
+
+            // Initialize
+            applyFilters();
+        });
+    </script>
+
+</body>
+</html>

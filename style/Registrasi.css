@@ -1,0 +1,85 @@
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.header-area {
+    background-color: #008cff;
+    color: white;
+}
+
+.header-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.input-field {
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 14px;
+    background-color: #e8f3ff;
+    border: 2px solid #008cff;
+    color: #333;
+}
+
+.otp-info {
+    font-size: 13px;
+    color: #555;
+}
+
+.next-btn {
+    background-color: #008cff;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.next-btn:hover {
+    background-color: #0076d6;
+}
+
+.footer {
+    font-size: 14px;
+    color: #555;
+}
+
+.login-link {
+    color: #008cff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .next-btn {
+        margin-top: 40px;
+    }
+    .footer {
+        margin-top: 25px;
+        text-align: center;
+        display: block;
+    }
+}
+
+.next-btn.fixed-bottom {
+    left: 0;
+    right: 0;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: auto !important;
+}
+
+.footer.fixed-bottom {
+    left: 0;
+    right: 0;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: auto !important;
+}

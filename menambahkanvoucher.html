@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style/menambahkanvoucher.css">
+</head>
+
+<body>
+
+    <div class="container-fluid p-0 d-flex flex-column min-vh-100">
+
+        <!-- Header -->
+        <div class="bg-primary text-white p-3 d-flex align-items-center">
+            <a href="home.html" class="text-white me-3">
+                <i class="bi bi-arrow-left fs-4"></i>
+            </a>
+            <h5 class="m-0">menambahkan Voucher</h5>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-3" id="main-content">
+            <!-- Platform Voucher Section -->
+            <div class="voucher-section">
+                <h6 class="section-title">Select Platform Voucher</h6>
+                <div class="voucher-card">
+                    <div class="voucher-header">
+                        <div class="mb-2">
+                            <label for="platformVoucherInput">
+                                Masukkan Kode Voucher Platform
+                            </label>
+                        </div>
+                        <div class="voucher-input">
+                            <input type="text" class="form-control" id="platformVoucherInput" placeholder="Masukkan kode voucher">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free Shipping Voucher Section -->
+            <div class="voucher-section">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="section-title mb-0">Voucher Gratis Ongkir</h6>
+                    <a href="#" class="show-all-link">Tampilkan Semua <i class="bi bi-chevron-down"></i></a>
+                </div>
+                
+                <!-- Voucher Gratis Ongkir 1 (Valid) -->
+                <div class="voucher-item">
+                    <div class="voucher-item-header">
+                        <span class="voucher-item-title">Gratis Ongkir</span>
+                        <div class="form-check">
+                            <input class="form-check-input voucher-checkbox" type="checkbox" value="valid" data-valid="true">
+                        </div>
+                    </div>
+                    <div class="voucher-item-body">
+                        <div class="voucher-item-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="voucher-item-details">
+                            <div class="voucher-item-name">Gratis Ongkir Semua Merchant</div>
+                            <p class="voucher-item-desc">Min. pembelian Rp 50.000</p>
+                            <div class="voucher-item-expiry">Berlaku hingga 30 Des 2023</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-footer">
+                        Syarat dan ketentuan berlaku
+                    </div>
+                </div>
+                
+                <!-- Voucher Gratis Ongkir 2 (Valid) -->
+                <div class="voucher-item">
+                    <div class="voucher-item-header">
+                        <span class="voucher-item-title">Gratis Ongkir</span>
+                        <div class="form-check">
+                            <input class="form-check-input voucher-checkbox" type="checkbox" value="valid" data-valid="true">
+                        </div>
+                    </div>
+                    <div class="voucher-item-body">
+                        <div class="voucher-item-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="voucher-item-details">
+                            <div class="voucher-item-name">Gratis Ongkir Merchant Terpilih</div>
+                            <p class="voucher-item-desc">Min. pembelian Rp 30.000</p>
+                            <div class="voucher-item-expiry">Berlaku hingga 15 Jan 2024</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-footer">
+                        Syarat dan ketentuan berlaku
+                    </div>
+                </div>
+                
+                <!-- Voucher Gratis Ongkir 3 (Tidak Valid) -->
+                <div class="voucher-item">
+                    <div class="voucher-item-header">
+                        <span class="voucher-item-title">Gratis Ongkir</span>
+                        <div class="form-check">
+                            <input class="form-check-input voucher-checkbox" type="checkbox" value="invalid" data-valid="false">
+                        </div>
+                    </div>
+                    <div class="voucher-item-body">
+                        <div class="voucher-item-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="voucher-item-details">
+                            <div class="voucher-item-name">Gratis Ongkir Akhir Tahun</div>
+                            <p class="voucher-item-desc">Min. pembelian Rp 100.000</p>
+                            <div class="voucher-item-expiry">Kadaluarsa</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-footer">
+                        Syarat dan ketentuan berlaku
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discount/Cashback Section -->
+            <div class="voucher-section">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="section-title mb-0">Diskon / Cashback</h6>
+                    <a href="#" class="show-all-link">Tampilkan Semua <i class="bi bi-chevron-down"></i></a>
+                </div>
+                
+                <!-- Voucher Diskon 1 (Valid) -->
+                <div class="voucher-item">
+                    <div class="voucher-item-header">
+                        <span class="voucher-item-title">Diskon 20%</span>
+                        <div class="form-check">
+                            <input class="form-check-input voucher-checkbox" type="checkbox" value="valid" data-valid="true">
+                        </div>
+                    </div>
+                    <div class="voucher-item-body">
+                        <div class="voucher-item-icon">
+                            <i class="bi bi-percent"></i>
+                        </div>
+                        <div class="voucher-item-details">
+                            <div class="voucher-item-name">Diskon 20% Semua Produk</div>
+                            <p class="voucher-item-desc">Maks. diskon Rp 50.000</p>
+                            <div class="voucher-item-expiry">Berlaku hingga 25 Des 2023</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-footer">
+                        Syarat dan ketentuan berlaku
+                    </div>
+                </div>
+                
+                <!-- Voucher Cashback 1 (Valid) -->
+                <div class="voucher-item">
+                    <div class="voucher-item-header">
+                        <span class="voucher-item-title">Cashback 10%</span>
+                        <div class="form-check">
+                            <input class="form-check-input voucher-checkbox" type="checkbox" value="valid" data-valid="true">
+                        </div>
+                    </div>
+                    <div class="voucher-item-body">
+                        <div class="voucher-item-icon">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <div class="voucher-item-details">
+                            <div class="voucher-item-name">Cashback 10% Transaksi Pertama</div>
+                            <p class="voucher-item-desc">Maks. cashback Rp 25.000</p>
+                            <div class="voucher-item-expiry">Berlaku hingga 10 Jan 2024</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-footer">
+                        Syarat dan ketentuan berlaku
+                    </div>
+                </div>
+                
+                <!-- Voucher Diskon 2 (Tidak Valid) -->
+                <div class="voucher-item">
+                    <div class="voucher-item-header">
+                        <span class="voucher-item-title">Diskon 15%</span>
+                        <div class="form-check">
+                            <input class="form-check-input voucher-checkbox" type="checkbox" value="invalid" data-valid="false">
+                        </div>
+                    </div>
+                    <div class="voucher-item-body">
+                        <div class="voucher-item-icon">
+                            <i class="bi bi-percent"></i>
+                        </div>
+                        <div class="voucher-item-details">
+                            <div class="voucher-item-name">Diskon 15% Fashion</div>
+                            <p class="voucher-item-desc">Min. pembelian Rp 200.000</p>
+                            <div class="voucher-item-expiry">Kadaluarsa</div>
+                        </div>
+                    </div>
+                    <div class="voucher-item-footer">
+                        Syarat dan ketentuan berlaku
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay for dimming background -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Success Modal (voucher4) -->
+        <div class="modal-content success-modal" id="success-modal">
+            <h5>Voucher</h5>
+            <p>Berhasil Ditambahkan!</p>
+            <div class="success-icon">
+                <i class="bi bi-check-circle"></i>
+            </div>
+
+            <button class="btn btn-back" id="success-back-btn">Kembali</button>
+        </div>
+
+        <!-- Error Modal for manual input (voucher3) -->
+        <div class="modal-content error-modal" id="error-modal-manual">
+            <h5>Maaf</h5>
+            <p>Kode Voucher Salah</p>
+            <div class="error-icon">
+                <i class="bi bi-x-circle"></i>
+            </div>
+            <h5 class="text-danger">ERROR!</h5>
+            <button class="btn btn-back" id="error-manual-back-btn">Kembali</button>
+        </div>
+
+        <!-- Error Modal for checkbox (voucher3) -->
+        <div class="modal-content error-modal" id="error-modal-checkbox">
+            <h5>Maaf</h5>
+            <p>Kode Voucher Tidak Valid</p>
+            <div class="error-icon">
+                <i class="bi bi-x-circle"></i>
+            </div>
+            <h5 class="text-danger">ERROR!</h5>
+            <button class="btn btn-back" id="error-checkbox-back-btn">Kembali</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const platformVoucherInput = document.getElementById('platformVoucherInput');
+            const overlay = document.getElementById('overlay');
+            const successModal = document.getElementById('success-modal');
+            const errorModalManual = document.getElementById('error-modal-manual');
+            const errorModalCheckbox = document.getElementById('error-modal-checkbox');
+            const successBackBtn = document.getElementById('success-back-btn');
+            const errorManualBackBtn = document.getElementById('error-manual-back-btn');
+            const errorCheckboxBackBtn = document.getElementById('error-checkbox-back-btn');
+            
+            // Get all voucher checkboxes
+            const voucherCheckboxes = document.querySelectorAll('.voucher-checkbox');
+
+            // Handle platform voucher input (Enter key)
+            platformVoucherInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const voucherCode = this.value.trim();
+                    
+                    if (voucherCode.length > 0) {
+                        // Selalu tampilkan pesan error untuk input manual
+                        overlay.style.display = 'block';
+                        errorModalManual.style.display = 'block';
+                        
+                        // Clear input
+                        this.value = '';
+                    }
+                }
+            });
+
+            // Back button handlers
+            successBackBtn.addEventListener('click', function() {
+                successModal.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
+            errorManualBackBtn.addEventListener('click', function() {
+                errorModalManual.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
+            errorCheckboxBackBtn.addEventListener('click', function() {
+                errorModalCheckbox.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
+            // Close modal when clicking on overlay
+            overlay.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                successModal.style.display = 'none';
+                errorModalManual.style.display = 'none';
+                errorModalCheckbox.style.display = 'none';
+            });
+            
+            // Handle individual voucher checkboxes
+            voucherCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        const isValid = this.getAttribute('data-valid') === 'true';
+                        
+                        overlay.style.display = 'block';
+                        
+                        if (isValid) {
+                            successModal.style.display = 'block';
+                        } else {
+                            errorModalCheckbox.style.display = 'block';
+                        }
+                        
+                        // Uncheck the checkbox after showing modal
+                        setTimeout(() => {
+                            this.checked = false;
+                        }, 100);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

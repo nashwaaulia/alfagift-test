@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Items</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .menu-container {
+            max-width: 400px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .menu-item:hover {
+            background-color: #f8f9fa;
+        }
+        .menu-item:active {
+            background-color: #e9ecef;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .menu-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .small-button {
+            background-color: #0d6efd;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .small-button:hover {
+            background-color: #0b5ed7;
+        }
+        .header-area {
+            background-color: #0d6efd;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+        <div class="header-area d-flex w-100 align-items-center mb-4 text-light p-3 border-bottom">
+            <a href="home.html" class="back-btn me-2 text-light" aria-label="Kembali">
+                <i class="bi bi-arrow-left fs-3"></i>
+            </a>
+            <h1 class="header-title fs-5 mb-0">Riwayat Pesanan</h1>
+        </div>
+
+    <div class="menu-container">
+        <!-- FAQ Item -->
+        <a href="#" class="menu-item" onclick="handleMenuClick('FAQ')">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-headphones text-primary"></i>
+                </div>
+                <span>FAQ</span>
+            </div>
+            <i class="bi bi-chevron-right text-muted"></i>
+        </a>
+
+        <!-- Email Item -->
+        <a href="#" class="menu-item" onclick="handleMenuClick('Email')">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-envelope text-primary"></i>
+                </div>
+                <span>Email</span>
+            </div>
+            <i class="bi bi-chevron-right text-muted"></i>
+        </a>
+
+        <!-- Chat Item -->
+        <a href="Menghubungi CS 2.html" class="menu-item">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-chat-left-fill text-primary"></i>
+                </div>
+                <span>Chat</span>
+            </div>
+            <i class="bi bi-chevron-right text-muted"></i>
+        </a>
+
+        <!-- Telepon Item -->
+        <a href="Menghubungi CS 3.html" class="menu-item">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-telephone text-primary"></i>
+                </div>
+                <span>Telepon</span>
+            </div>
+            <span class="small-button">Panggil</span>
+        </a>
+
+        <!-- Additional Menu Items -->
+        <a href="#" class="menu-item" onclick="handleMenuClick('Pengaturan')">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-gear text-primary"></i>
+                </div>
+                <span>Pengaturan</span>
+            </div>
+            <i class="bi bi-chevron-right text-muted"></i>
+        </a>
+
+        <a href="#" class="menu-item" onclick="handleMenuClick('Bantuan')">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-question-circle text-primary"></i>
+                </div>
+                <span>Bantuan</span>
+            </div>
+            <i class="bi bi-chevron-right text-muted"></i>
+        </a>
+
+        <a href="#" class="menu-item" onclick="handleMenuClick('Tentang')">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <i class="bi bi-info-circle text-primary"></i>
+                </div>
+                <span>Tentang Aplikasi</span>
+            </div>
+            <i class="bi bi-chevron-right text-muted"></i>
+        </a>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-info-circle text-primary me-2"></i>
+                <strong class="me-auto">Notifikasi</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                Menu diklik!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleMenuClick(menuName) {
+            event.preventDefault();
+            
+            const toastMessage = document.getElementById('toastMessage');
+            const toast = new bootstrap.Toast(document.getElementById('liveToast'));
+            
+            switch(menuName) {
+                case 'FAQ':
+                    toastMessage.textContent = 'Membuka halaman FAQ dan Pusat Bantuan';
+                    break;
+                case 'Email':
+                    toastMessage.textContent = 'Membuka aplikasi email untuk menghubungi kami';
+                    break;
+                case 'Chat':
+                    toastMessage.textContent = 'Membuka chat dengan customer service';
+                    break;
+                case 'Telepon':
+                    toastMessage.textContent = 'Menghubungi customer service via telepon';
+                    // In real app, this would trigger phone call
+                    window.location.href = 'tel:+62123456789';
+                    return;
+                case 'Pengaturan':
+                    toastMessage.textContent = 'Membuka halaman pengaturan aplikasi';
+                    break;
+                case 'Bantuan':
+                    toastMessage.textContent = 'Membuka pusat bantuan dan panduan';
+                    break;
+                case 'Tentang':
+                    toastMessage.textContent = 'Membuka informasi tentang aplikasi';
+                    break;
+                default:
+                    toastMessage.textContent = `Menu ${menuName} diklik`;
+            }
+            
+            toast.show();
+        }
+
+        // Add click effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                item.addEventListener('mouseup', function() {
+                    this.style.transform = 'scale(1)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

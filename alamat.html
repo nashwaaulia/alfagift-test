@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alamat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header-area {
+            background-color: #0d6efd;
+        }
+        .back-btn {
+            text-decoration: none;
+        }
+        .address-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .address-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .address-card.selected {
+            border: 2px solid #0d6efd;
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        .note-input {
+            resize: none;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-area d-flex align-items-center p-3 border-bottom">
+        <a href="home.html" class="back-btn me-2 text-light" aria-label="Kembali">
+            <i class="bi bi-arrow-left fs-3"></i>
+        </a>
+        <h3 class="header-title fs-5 p-3 mb-0 text-white">Alamat</h3>
+    </div>
+
+    <!-- Container untuk daftar alamat -->
+    <div id="address-container" class="container mt-3">
+        <!-- Alamat akan ditambahkan secara dinamis di sini -->
+    </div>
+
+    <!-- Modal untuk menambah/ubah alamat -->
+    <div id="address-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 id="modal-title">Tambah Alamat Baru</h4>
+                <button id="close-modal" class="btn-close"></button>
+            </div>
+            
+            <form id="address-form">
+                <input type="hidden" id="edit-index">
+                
+                <div class="mb-3">
+                    <label for="address-name" class="form-label">Nama Alamat</label>
+                    <input type="text" class="form-control" id="address-name" placeholder="Contoh: Rumah, Kantor, Apartemen" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="recipient-name" class="form-label">Nama Penerima</label>
+                    <input type="text" class="form-control" id="recipient-name" placeholder="Nama lengkap penerima" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Nomor Telepon</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Contoh: 081234567890" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="province" class="form-label">Provinsi</label>
+                    <select class="form-select" id="province" required>
+                        <option value="" selected disabled>Pilih Provinsi</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="city" class="form-label">Kota/Kabupaten</label>
+                    <select class="form-select" id="city" required disabled>
+                        <option value="" selected disabled>Pilih Kota/Kabupaten</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="district" class="form-label">Kecamatan</label>
+                    <select class="form-select" id="district" required disabled>
+                        <option value="" selected disabled>Pilih Kecamatan</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="postal-code" class="form-label">Kode Pos</label>
+                    <input type="text" class="form-control" id="postal-code" placeholder="Contoh: 28125" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="full-address" class="form-label">Alamat Lengkap</label>
+                    <textarea class="form-control note-input" id="full-address" rows="3" placeholder="Jalan, nomor rumah, nama gedung, lantai, dll." required></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="address-note" class="form-label">Catatan untuk Kurir (Opsional)</label>
+                    <textarea class="form-control note-input" id="address-note" rows="2" placeholder="Contoh: Dekat minimarket, rumah warna biru"></textarea>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="set-primary">
+                    <label class="form-check-label" for="set-primary">
+                        Jadikan alamat utama
+                    </label>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Simpan Alamat</button>
+                    <button type="button" id="delete-address" class="btn btn-danger d-none">Hapus Alamat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tombol Tambah Alamat -->
+    <div class="container p-3">
+        <div class="row">
+            <div class="col-12">
+                <button id="add-address-btn" class="btn btn-primary w-100">
+                    <i class="bi bi-plus"></i> Tambahkan Alamat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elemen DOM
+            const addressContainer = document.getElementById('address-container');
+            const addressModal = document.getElementById('address-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const addressForm = document.getElementById('address-form');
+            const addAddressBtn = document.getElementById('add-address-btn');
+            const closeModalBtn = document.getElementById('close-modal');
+            const deleteAddressBtn = document.getElementById('delete-address');
+            const editIndexInput = document.getElementById('edit-index');
+            
+            // Data alamat (disimpan di localStorage)
+            let addresses = JSON.parse(localStorage.getItem('addresses')) || [];
+            
+            // Data dummy untuk provinsi, kota, dan kecamatan
+            const regions = {
+                'Riau': {
+                    'Pekanbaru': ['Marpoyan Damai', 'Bukit Raya', 'Payung Sekaki', 'Tampan', 'Tenayan Raya'],
+                    'Dumai': ['Dumai Barat', 'Dumai Timur', 'Dumai Kota', 'Dumai Selatan'],
+                    'Siak': ['Siak', 'Minas', 'Sungai Apit', 'Dayun']
+                },
+                'Sumatera Barat': {
+                    'Padang': ['Koto Tangah', 'Lubuk Begalung', 'Padang Barat', 'Padang Timur'],
+                    'Bukittinggi': ['Guguk Panjang', 'Mandiangin Koto Selayan'],
+                    'Payakumbuh': ['Payakumbuh Barat', 'Payakumbuh Timur', 'Payakumbuh Utara']
+                },
+                'Jawa Barat': {
+                    'Bandung': ['Coblong', 'Sukajadi', 'Bandung Wetan', 'Cidadap'],
+                    'Bekasi': ['Bekasi Barat', 'Bekasi Timur', 'Bekasi Selatan', 'Bekasi Utara'],
+                    'Depok': ['Sawangan', 'Pancoran Mas', 'Cipayung', 'Sukmajaya']
+                }
+            };
+            
+            // Inisialisasi aplikasi
+            function init() {
+                // Jika tidak ada alamat, tambahkan alamat default
+                if (addresses.length === 0) {
+                    addresses = [
+                        {
+                            name: 'Cluster Crystal Garden - Olivia Rodrigo',
+                            recipient: 'Olivia Rodrigo',
+                            phone: '081234567890',
+                            province: 'Riau',
+                            city: 'Pekanbaru',
+                            district: 'Marpoyan Damai',
+                            postalCode: '28125',
+                            fullAddress: 'Citraland Pekanbaru, Jl. Soekarno-Hatta No. 11, Tangkerang Barat, Kecamatan Marpoyan Damai, Kota Pekanbaru, Riau.',
+                            note: 'Tambahkan catatan untuk memudahkan kurir menemukan lokasimu.',
+                            primary: true
+                        }
+                    ];
+                    saveAddresses();
+                }
+                
+                // Isi dropdown provinsi
+                populateProvinceDropdown();
+                
+                // Render daftar alamat
+                renderAddresses();
+                
+                // Event listeners
+                addAddressBtn.addEventListener('click', openAddModal);
+                closeModalBtn.addEventListener('click', closeModal);
+                addressModal.addEventListener('click', function(e) {
+                    if (e.target === addressModal) closeModal();
+                });
+                addressForm.addEventListener('submit', saveAddress);
+                deleteAddressBtn.addEventListener('click', deleteAddress);
+                
+                // Event listeners untuk dropdown berantai
+                document.getElementById('province').addEventListener('change', function() {
+                    populateCityDropdown(this.value);
+                });
+                document.getElementById('city').addEventListener('change', function() {
+                    populateDistrictDropdown(
+                        document.getElementById('province').value, 
+                        this.value
+                    );
+                });
+            }
+            
+            // Render daftar alamat
+            function renderAddresses() {
+                addressContainer.innerHTML = '';
+                
+                addresses.forEach((address, index) => {
+                    const addressCard = document.createElement('div');
+                    addressCard.className = `card address-card mb-3 ${address.primary ? 'selected' : ''}`;
+                    addressCard.innerHTML = `
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 class="card-title">${address.name} ${address.primary ? '<span class="badge bg-primary">Utama</span>' : ''}</h5>
+                                    <p class="card-text">
+                                        <strong>${address.recipient}</strong> | ${address.phone}<br>
+                                        ${address.fullAddress}<br>
+                                        ${address.district}, ${address.city}, ${address.province} ${address.postalCode}
+                                    </p>
+                                    ${address.note ? `<div class="card bg-light border-primary rounded p-2 mt-2">
+                                        <p class="mb-0 small">
+                                            <i class="bi text-primary bi-exclamation-circle-fill"></i>
+                                            ${address.note}
+                                        </p>
+                                    </div>` : ''}
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" onclick="setPrimaryAddress(${index})">Jadikan Utama</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="openEditModal(${index})">Ubah</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#" onclick="deleteAddress(${index})">Hapus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Event listener untuk memilih alamat
+                    addressCard.addEventListener('click', function(e) {
+                        if (!e.target.closest('.dropdown')) {
+                            setPrimaryAddress(index);
+                        }
+                    });
+                    
+                    addressContainer.appendChild(addressCard);
+                });
+            }
+            
+            // Buka modal untuk menambah alamat
+            function openAddModal() {
+                modalTitle.textContent = 'Tambah Alamat Baru';
+                addressForm.reset();
+                editIndexInput.value = '';
+                deleteAddressBtn.classList.add('d-none');
+                openModal();
+            }
+            
+            // Buka modal untuk mengedit alamat
+            window.openEditModal = function(index) {
+                modalTitle.textContent = 'Ubah Alamat';
+                const address = addresses[index];
+                
+                // Isi form dengan data alamat
+                document.getElementById('address-name').value = address.name;
+                document.getElementById('recipient-name').value = address.recipient;
+                document.getElementById('phone').value = address.phone;
+                document.getElementById('postal-code').value = address.postalCode;
+                document.getElementById('full-address').value = address.fullAddress;
+                document.getElementById('address-note').value = address.note || '';
+                document.getElementById('set-primary').checked = address.primary;
+                
+                // Isi dropdown provinsi, kota, dan kecamatan
+                populateProvinceDropdown();
+                document.getElementById('province').value = address.province;
+                populateCityDropdown(address.province);
+                setTimeout(() => {
+                    document.getElementById('city').value = address.city;
+                    populateDistrictDropdown(address.province, address.city);
+                    setTimeout(() => {
+                        document.getElementById('district').value = address.district;
+                    }, 100);
+                }, 100);
+                
+                editIndexInput.value = index;
+                deleteAddressBtn.classList.remove('d-none');
+                openModal();
+            };
+            
+            // Buka modal
+            function openModal() {
+                addressModal.style.display = 'flex';
+            }
+            
+            // Tutup modal
+            function closeModal() {
+                addressModal.style.display = 'none';
+            }
+            
+            // Simpan alamat (tambah atau edit)
+            function saveAddress(e) {
+                e.preventDefault();
+                
+                const addressData = {
+                    name: document.getElementById('address-name').value,
+                    recipient: document.getElementById('recipient-name').value,
+                    phone: document.getElementById('phone').value,
+                    province: document.getElementById('province').value,
+                    city: document.getElementById('city').value,
+                    district: document.getElementById('district').value,
+                    postalCode: document.getElementById('postal-code').value,
+                    fullAddress: document.getElementById('full-address').value,
+                    note: document.getElementById('address-note').value,
+                    primary: document.getElementById('set-primary').checked
+                };
+                
+                const editIndex = editIndexInput.value;
+                
+                if (editIndex === '') {
+                    // Tambah alamat baru
+                    if (addressData.primary) {
+                        // Hapus status utama dari alamat lain
+                        addresses.forEach(addr => addr.primary = false);
+                    }
+                    addresses.push(addressData);
+                } else {
+                    // Edit alamat yang sudah ada
+                    if (addressData.primary) {
+                        // Hapus status utama dari alamat lain
+                        addresses.forEach(addr => addr.primary = false);
+                    }
+                    addresses[editIndex] = addressData;
+                }
+                
+                // Jika ini satu-satunya alamat, jadikan utama
+                if (addresses.length === 1) {
+                    addresses[0].primary = true;
+                }
+                
+                saveAddresses();
+                renderAddresses();
+                closeModal();
+                
+                // Tampilkan pesan sukses
+                alert('Alamat berhasil disimpan!');
+            }
+            
+            // Hapus alamat
+            window.deleteAddress = function(index) {
+                if (confirm('Apakah Anda yakin ingin menghapus alamat ini?')) {
+                    const wasPrimary = addresses[index].primary;
+                    
+                    addresses.splice(index, 1);
+                    
+                    // Jika alamat yang dihapus adalah alamat utama, jadikan alamat pertama sebagai utama
+                    if (wasPrimary && addresses.length > 0) {
+                        addresses[0].primary = true;
+                    }
+                    
+                    saveAddresses();
+                    renderAddresses();
+                    closeModal();
+                    
+                    // Tampilkan pesan sukses
+                    alert('Alamat berhasil dihapus!');
+                }
+            };
+            
+            // Jadikan alamat sebagai utama
+            window.setPrimaryAddress = function(index) {
+                addresses.forEach((addr, i) => {
+                    addr.primary = i === index;
+                });
+                
+                saveAddresses();
+                renderAddresses();
+                
+                // Tampilkan pesan sukses
+                alert('Alamat utama berhasil diubah!');
+            };
+            
+            // Simpan alamat ke localStorage
+            function saveAddresses() {
+                localStorage.setItem('addresses', JSON.stringify(addresses));
+            }
+            
+            // Isi dropdown provinsi
+            function populateProvinceDropdown() {
+                const provinceSelect = document.getElementById('province');
+                provinceSelect.innerHTML = '<option value="" selected disabled>Pilih Provinsi</option>';
+                
+                Object.keys(regions).forEach(province => {
+                    const option = document.createElement('option');
+                    option.value = province;
+                    option.textContent = province;
+                    provinceSelect.appendChild(option);
+                });
+            }
+            
+            // Isi dropdown kota berdasarkan provinsi
+            function populateCityDropdown(province) {
+                const citySelect = document.getElementById('city');
+                citySelect.innerHTML = '<option value="" selected disabled>Pilih Kota/Kabupaten</option>';
+                
+                if (province && regions[province]) {
+                    citySelect.disabled = false;
+                    
+                    Object.keys(regions[province]).forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.textContent = city;
+                        citySelect.appendChild(option);
+                    });
+                } else {
+                    citySelect.disabled = true;
+                }
+                
+                // Reset dropdown kecamatan
+                document.getElementById('district').innerHTML = '<option value="" selected disabled>Pilih Kecamatan</option>';
+                document.getElementById('district').disabled = true;
+            }
+            
+            // Isi dropdown kecamatan berdasarkan kota
+            function populateDistrictDropdown(province, city) {
+                const districtSelect = document.getElementById('district');
+                districtSelect.innerHTML = '<option value="" selected disabled>Pilih Kecamatan</option>';
+                
+                if (province && city && regions[province] && regions[province][city]) {
+                    districtSelect.disabled = false;
+                    
+                    regions[province][city].forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district;
+                        districtSelect.appendChild(option);
+                    });
+                } else {
+                    districtSelect.disabled = true;
+                }
+            }
+            
+            // Jalankan inisialisasi
+            init();
+        });
+    </script>
+</body>
+</html>
